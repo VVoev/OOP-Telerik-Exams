@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace FurnitureFromScratch.Interfaces.Engine
 {
-    public interface ICommand
+    interface IFurnitureManufacturerEngine
     {
-        string name { get; }
-
-        IList<string> Parameters { get; }
+        void Start();
     }
 }

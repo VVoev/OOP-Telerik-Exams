@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace FurnitureFromScratch.Interfaces.Engine
 {
-    public interface ICommand
+    interface IRenderer
     {
-        string name { get; }
-
-        IList<string> Parameters { get; }
+        IEnumerable<string> Input();
+        void OutPut(IEnumerable<string> ouput);
     }
 }

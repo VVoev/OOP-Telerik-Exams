@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace FurnitureFromScratch.Interfaces.Engine
 {
-    public interface ICommand
+    public interface ICompanyFactory
     {
-        string name { get; }
-
-        IList<string> Parameters { get; }
+        ICompany CreateCompany(string name, string registrationNumber);
     }
 }
