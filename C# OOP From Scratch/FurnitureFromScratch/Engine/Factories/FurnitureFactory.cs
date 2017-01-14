@@ -19,22 +19,22 @@ namespace FurnitureFromScratch.Engine.Factories
 
         public IAdjustableChair CreateAdjustableChair(string model, string materialType, decimal price, decimal height, int numberOfLegs)
         {
-            //Todo ....
+            //Todo AdjustableChair
         }
 
         public IChair CreateChair(string model, string materialType, decimal price, decimal height, int numberOFlegs)
         {
-            //Todo ....
+            //Todo Chair
         }
 
         public IConvertibleChair CreateConvertibleChair(string model, string materialType, decimal price, decimal height, int numberOfLegs)
         {
-            //Todo ....
+            //Todo ConvertibleChair
         }
 
         public ITable CreateTable(string model, string materialType, decimal price, decimal height, decimal lenght, decimal width)
         {
-            //Todo ....
+            //Todo Table
         }
 
         private MaterialType GetMaterialType(string material)

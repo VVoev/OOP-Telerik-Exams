@@ -8,7 +8,7 @@ namespace FurnitureFromScratch.Interfaces.Engine
 {
     public interface ICommand
     {
-        string name { get; }
+        string Name { get; }
 
         IList<string> Parameters { get; }
     }
