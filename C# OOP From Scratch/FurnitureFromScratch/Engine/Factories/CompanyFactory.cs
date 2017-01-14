@@ -12,7 +12,7 @@ namespace FurnitureFromScratch.Engine.Factories
     {
         public ICompany CreateCompany(string name, string registrationNumber)
         {
-            //Todo Company
+            return Company(name, registrationNumber);
         }
     }
 }
