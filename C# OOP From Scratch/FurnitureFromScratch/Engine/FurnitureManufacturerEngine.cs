@@ -109,27 +109,95 @@ namespace FurnitureFromScratch.Engine
                         break;
                     case EngineConstants.SetChairHeight:
                         var adjChairModel = command.Parameters[0];
-                        var adjChairHeight = command.Parameters[1];
+                        var adjChairHeight = decimal.Parse(command.Parameters[1]);
                         comandResult = this.AdjustChairHeight(adjChairModel, adjChairHeight);
                         commandRessults.Add(comandResult);
                         break;
                     case EngineConstants.ConvertChair:
                         var convertibleChairModel = command.Parameters[0];
-                        commandRessults = this.ConvertChair(convertibleChairModel);
+                        comandResult = this.ConvertChair(convertibleChairModel);
                         commandRessults.Add(comandResult);
                         break;
-                    default:
+                    default: commandRessults.Add(string.Format(EngineConstants.InvalidCommandErrorMessage, command.Name));
                         break;
                 }
             }
+            return commandRessults;
+        }
 
+        private string ConvertChair(string convertibleChairModel)
+        {
+            if (!this.furnitures.ContainsKey(convertibleChairModel))
+            {
+                return string.Format(EngineConstants.FurnitureNotFoundErrorMessage, convertibleChairModel);
+            }
+            var convChair = this.furnitures[convertibleChairModel] as IConvertibleChair;
+            if(convChair == null)
+            {
+                return string.Format(EngineConstants.FurnitureNotFoundErrorMessage, convertibleChairModel);
+            }
+            convChair.Convert();
+            return string.Format(EngineConstants.ChairStateConvertedSuccessMessage, convertibleChairModel);
+
+
+        }
+
+        private string AdjustChairHeight(string adjChairModel, decimal height)
+        {
+            if (!this.furnitures.ContainsKey(adjChairModel))
+            {
+                return string.Format(EngineConstants.FurnitureNotFoundErrorMessage, adjChairModel);
+            }
+            var adjChair = this.furnitures[adjChairModel] as IAdjustableChair;
+            if (adjChair == null)
+            {
+                return string.Format(EngineConstants.FurnitureNotFoundErrorMessage, adjChairModel);
+            }
+            adjChair.SetHeight(height);
+            return string.Format(EngineConstants.ChairHeightAdjustedSuccessMessage, adjChairModel);
+        }
+
+        private string CreateChair(string chairModel, string chairMaterial, decimal chairPrice, decimal chairHeight, int chairLegs, string chairType)
+        {
+            if (this.companies.ContainsKey(chairModel))
+            {
+                return string.Format(EngineConstants.FurnitureExistsErrorMessage, chairModel);
+            }
+            IChair chair;
+            switch (chairType)
+            {
+                case EngineConstants.NormalChairType:
+                    chair = this.furnitureFactory.CreateChair(chairModel, chairMaterial, chairPrice, chairHeight, chairLegs);
+                    break;
+                case EngineConstants.AdjustableChairType:
+                    chair = this.furnitureFactory.CreateAdjustableChair(chairModel, chairMaterial, chairPrice, chairHeight, chairLegs);
+                    break;
+                case EngineConstants.ConvertibleChairType:
+                    chair = this.furnitureFactory.CreateConvertibleChair(chairModel, chairMaterial, chairPrice, chairHeight, chairLegs);
+                    break;
+                default: return string.Format(EngineConstants.InvalidChairTypeErrorMessage, chairType);
+            }
+            this.furnitures.Add(chairModel, chair);
+            return string.Format(EngineConstants.ChairCreatedSuccessMessage, chairModel);
+        }
+
+        private string CreateTable(string tableModel, string tableMaterial, decimal tablePrice, decimal tableHeight, decimal tableLenght, decimal tableWidth)
+        {
+            if (this.companies.ContainsKey(tableModel))
+            {
+                return string.Format(EngineConstants.FurnitureExistsErrorMessage, tableModel);
+            }
+            var table = this.furnitureFactory.CreateTable(tableModel, tableMaterial, tablePrice, tableHeight, tableLenght, tableWidth);
+            this.furnitures.Add(tableModel, table);
+
+            return string.Format(EngineConstants.TableCreatedSuccessMessage, tableModel);
         }
 
         private string ShowCatalog(string companyCatalog)
         {
             if (!this.companies.ContainsKey(companyCatalog))
             {
-
+                return string.Format(EngineConstants.CompanyNotFoundErrorMessage, companyCatalog);
             }
             return this.companies[companyCatalog].Catalog();
         }
