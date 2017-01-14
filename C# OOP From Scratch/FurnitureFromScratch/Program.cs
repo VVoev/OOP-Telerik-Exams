@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FurnitureFromScratch.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace FurnitureFromScratch
     {
         static void Main()
         {
+            //Singleton Implementation
+            FurnitureManufacturerEngine.Instance.Start();
         }
     }
 }
