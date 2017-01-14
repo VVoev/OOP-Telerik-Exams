@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Engine\Command.cs" />
     <Compile Include="Engine\EngineConstants.cs" />
+    <Compile Include="Models\Chair.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Engine\Factories\CompanyFactory.cs" />
     <Compile Include="Engine\ConsoleRenderer.cs" />
     <Compile Include="Engine\Factories\FurnitureFactory.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Interfaces\Models\IConvertibleChair.cs" />
     <Compile Include="Interfaces\Models\IFurniture.cs" />
     <Compile Include="Interfaces\Models\ITable.cs" />
+    <Compile Include="Models\Furniture.cs" />
     <Compile Include="Models\MaterialType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

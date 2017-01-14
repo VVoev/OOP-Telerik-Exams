@@ -4,9 +4,9 @@
 
     public interface ICompany
     {
-        string name { get; }
+        string Name { get; }
 
-        string RegistratinNumber { get; }
+        string RegistrationNumber { get; }
 
         ICollection<IFurniture> Furnitures { get; }
 

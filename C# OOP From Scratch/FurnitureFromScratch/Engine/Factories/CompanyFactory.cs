@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FurnitureFromScratch.Interfaces;
+using FurnitureManufacturer.Models;
 
 namespace FurnitureFromScratch.Engine.Factories
 {
@@ -12,7 +13,7 @@ namespace FurnitureFromScratch.Engine.Factories
     {
         public ICompany CreateCompany(string name, string registrationNumber)
         {
-            return Company(name, registrationNumber);
+            return new Company(name, registrationNumber);
         }
     }
 }

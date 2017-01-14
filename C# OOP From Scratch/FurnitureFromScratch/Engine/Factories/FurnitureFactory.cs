@@ -24,7 +24,7 @@ namespace FurnitureFromScratch.Engine.Factories
 
         public IChair CreateChair(string model, string materialType, decimal price, decimal height, int numberOFlegs)
         {
-            return new Chair(model, materialType, price, height, numberOFlegs);
+            return new Chair(model, GetMaterialType(materialType), price, height, numberOFlegs);
         }
 
         public IConvertibleChair CreateConvertibleChair(string model, string materialType, decimal price, decimal height, int numberOfLegs)
