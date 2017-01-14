@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FurnitureFromScratch.Interfaces.Engine
 {
-    interface IFurnitureManufacturerEngine
+   public interface IFurnitureManufacturerEngine
     {
         void Start();
     }

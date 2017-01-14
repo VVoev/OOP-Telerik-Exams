@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Command.cs" />
+    <Compile Include="Engine\EngineConstants.cs" />
     <Compile Include="Engine\Factories\CompanyFactory.cs" />
     <Compile Include="Engine\ConsoleRenderer.cs" />
     <Compile Include="Engine\Factories\FurnitureFactory.cs" />
+    <Compile Include="Engine\FurnitureManufacturerEngine.cs" />
     <Compile Include="Interfaces\Engine\ICommand.cs" />
     <Compile Include="Interfaces\Engine\ICompanyFactory.cs" />
     <Compile Include="Interfaces\Engine\IFurnitureFactory.cs" />
