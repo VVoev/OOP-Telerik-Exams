@@ -1,2 +1,4 @@
-# OOP-Telerik-Exams
-OOP Telerik Exams
+
+Repository about C# OOP
+OOP-Telerik-Exams
+
